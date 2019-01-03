@@ -214,3 +214,11 @@ X-KDE-SubstituteUID=false
 X-KDE-Username=
 ```
 
+### Use git:
+
+```shell
+ssh-keygen -t rsa -C "you@email"
+git remote add origin git@github.com:yang-233/DeployManjaroLinux.git
+git pull origin master
+```
+
