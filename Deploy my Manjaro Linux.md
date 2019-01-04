@@ -218,7 +218,11 @@ X-KDE-Username=
 
 ```shell
 ssh-keygen -t rsa -C "you@email"
+git config --global user.email "you@email"
+git config --global user.name "yang"
 git remote add origin git@github.com:yang-233/DeployManjaroLinux.git
 git pull origin master
+git push origin master
+
 ```
 
