@@ -323,3 +323,28 @@ git push origin master
 
 ```
 
+### Grub rescue:
+
+```
+grub rescue> 
+#viewing settings
+set 
+#list all disk partitions
+ls
+#view all partitions in turn
+#like 
+ls (sd0,gpt3)
+#find the ext file system and change the settings
+set root=sdo,gpt3
+set prefix=(sd0,gpt3)/boot/grub
+#now, we can boot
+insmod normal
+normal
+```
+
+```shell
+#after entering the linux system
+sudo update-grub
+sudo grub-install /dev/sda
+```
+
