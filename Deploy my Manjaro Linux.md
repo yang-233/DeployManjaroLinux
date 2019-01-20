@@ -240,7 +240,6 @@ vim ssconfig.json
 ```shell
 sudo pip install -U genpac
 cd ~/crossgfw
-touch pac
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" > pac
 ```
 
@@ -320,7 +319,6 @@ git config --global user.name "yang"
 git remote add origin git@github.com:yang-233/DeployManjaroLinux.git
 git pull origin master
 git push origin master
-
 ```
 
 ### Grub rescue:
@@ -346,5 +344,12 @@ normal
 #after entering the linux system
 sudo update-grub
 sudo grub-install /dev/sda
+```
+
+### Set Konsole Theme:
+
+```shell
+cp Dracula.colorscheme ~/.local/share/konsole
+#Go to Konsole > Settings > Edit Current Profile… > Appearance tab
 ```
 
