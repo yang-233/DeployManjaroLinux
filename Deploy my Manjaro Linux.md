@@ -217,9 +217,9 @@ sudo vim /usr/lib/python3.7/site-packages/shadowsocks/crypto/openssl.py
 >to libcrypto.EVP_CIPHER_CTX_reset(self._ctx)
 
 ```shell
-cd ~
-mkdir crossgfw
-cd crossgfw
+cd /etc
+mkdir proxy
+cd proxy
 vim ssconfig.json
 ```
 
@@ -239,7 +239,7 @@ vim ssconfig.json
 
 ```shell
 sudo pip install -U genpac
-cd ~/crossgfw
+cd /etc/proxy
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" > pac
 ```
 
@@ -252,6 +252,7 @@ vim privoxyconfig
 ```
 
 ```
+#the config
 listen-address 127.0.0.1:8228
 forward-socks5 / 127.0.0.1:1080 .
 ```
@@ -274,32 +275,82 @@ vim run.sh
 
 ```shell
 #!/bin/bash
+cd /etc/proxy
 sslocal -c ssconfig.json -d start
 privoxy privoxyconfig
+```
+
+#### AutoStart:
+
+```shell
+cd /etc
+sudo vim rc.local
+```
+
+append:
+
+```shell
+#!/bin/bash
+sslocal -c /etc/proxy/ssconfig.json -d start
+privoxy /etc/proxy/privoxyconfig
+```
+
+```shell
+sudo chmor a+x rc.local
+cd /etc/systemd/system/
+sudo vim rc-local.service
+```
+
+append:
+
+```
+[Unit]
+Description=/etc/rc.local Compatibility
+
+[Service]
+Type=oneshot
+ExecStart=/etc/rc.local
+TimeoutSec=0
+StandardInput=tty
+RemainAfterExit=yes
+
+[Install]
+WantedBy=multi-user.target
+```
+
+#### Update config:
+
+```shell
+cd /etc/proxy
+sudo vim update.sh
+```
+
+```shell
+#!/bin/bash
 genpac --format=pac --pac-proxy="SOCKS5 127.0.0.1:1080" > pac
 echo 'listen-address 127.0.0.1:8228
 forward-socks5 / 127.0.0.1:1080 .' > privoxyconfig 
 curl https://zfl9.github.io/gfwlist2privoxy/gfwlist.action >> privoxyconfig
 ```
 
-```shell
-reboot
+```
+sudo chmod a+x update.sh
 ```
 
-#### Build an applications on desktop:
+Build an application on desktop:
 
 ```
 [Desktop Entry]
-Comment[en_US]=cross the great firewall
-Comment=cross the great firewall
-Exec=sudo ./run.sh
-GenericName[en_US]=cross the great firewall
-GenericName=cross the great firewall
-Icon=
+Comment[en_US]=update config
+Comment=update config
+Exec=sudo /etc/proxy/update.sh
+GenericName[en_US]=update config
+GenericName=update config
+Icon=preferences-web-browser-shortcuts
 MimeType=
-Name[en_US]=crossgfw
-Name=crossgfw
-Path=/home/yang/Documents/crossgfw
+Name[en_US]=Update
+Name=Update
+Path=/etc/proxy
 StartupNotify=true
 Terminal=true
 TerminalOptions=
