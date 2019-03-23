@@ -404,3 +404,16 @@ cp Dracula.colorscheme ~/.local/share/konsole
 #Go to Konsole > Settings > Edit Current Profile… > Appearance tab
 ```
 
+### V2Ray:
+
+```shell
+source < (curl -sL https://git.io/fNgqx)
+```
+
+### Crossover:
+
+```shell
+sudo pacman -Syu base-devel --needed
+yaourt -S lib32-nss-mdns
+```
+
