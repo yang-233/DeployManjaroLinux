@@ -417,3 +417,55 @@ sudo pacman -Syu base-devel --needed
 yaourt -S lib32-nss-mdns
 ```
 
+### OneDrive:
+
+```shell
+#install
+sudo pacman -S curl sqlite dmd
+git clone https://github.com/abraunegg/onedrive.git
+cd onedrive
+make clean; make;
+sudo make install
+
+#run
+systemctl enable onedrive@<username>.service
+systemctl start onedrive@<username>.service
+systemctl status onedrive@username.service
+#uninstall
+sudo make uninstall
+# delete the application state
+rm -rf ~/.config/onedrive
+```
+
+### 中文字体：
+
+```
+sudo pacman -S 
+wqy-microhei 
+ttf-dejavu 
+wqy-zenhei 
+wqy-microhei
+adobe-source-han-serif-cn-fonts
+adobe-source-han-serif-tw-fonts 
+adobe-source-han-sans-cn-fonts 
+adobe-source-han-sans-tw-fonts
+
+wqy-zenhei
+wqy-bitmapfont
+ttf-arphic-ukai
+ttf-arphic-uming
+opendesktop-fonts 
+ttf-hannom	
+
+#AUR 
+ttf-tw
+ttf-twcns-fonts
+noto-fonts-sc
+noto-fonts-tc
+ttf-ms-win8-zh_cnAUR 
+ttf-ms-win8-zh_twAUR 
+ttf-ms-win10-zh_cnAUR 
+ttf-ms-win10-zh_twAUR 
+
+```
+
