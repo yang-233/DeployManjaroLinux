@@ -468,4 +468,10 @@ ttf-ms-win10-zh_cnAUR
 ttf-ms-win10-zh_twAUR 
 
 ```
-
+### Install jupyter:
+```
+pip instsall jupyter
+pip install jupyter_nbextensions_configurator jupyter_contrib_nbextensions
+jupyter contrib nbextension install --user
+jupyter nbextensions_configurator enable --user
+```
