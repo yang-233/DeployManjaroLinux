@@ -479,3 +479,10 @@ jupyter nbextensions_configurator enable --user
 ```
 git config --global credential.helper store
 ```
+
+### Set jupyter lab envs
+```
+#run this command for every envs
+conda install nb_conda_kernels
+```
+
