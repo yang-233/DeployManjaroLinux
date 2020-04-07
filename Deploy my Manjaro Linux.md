@@ -483,6 +483,7 @@ git config --global credential.helper store
 ### Set jupyter lab envs
 ```
 #run this command for every envs
+#run this command for base
 conda install nb_conda_kernels
 ```
 
