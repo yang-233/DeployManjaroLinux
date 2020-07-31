@@ -482,7 +482,9 @@ git config --global credential.helper store
 
 ### Set jupyter lab envs
 ```
-#run this command for base
-conda install nb_conda_kernels
+#run this command for every env
+conda install ipykernel
+conda activate ***
+python -m ipykernel install --user --name *** --display-name "Python (***)"
 ```
 
