@@ -486,5 +486,7 @@ git config --global credential.helper store
 conda install ipykernel
 conda activate ***
 python -m ipykernel install --user --name *** --display-name "Python (***)"
+#run this command for the notebook env
+conda install nb_conda_kernels
 ```
 
